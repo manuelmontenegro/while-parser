@@ -1203,7 +1203,7 @@ yyaction_25(TokenChars, TokenLine) ->
 -compile({inline,yyaction_26/1}).
 -file("src/lexer_erlang.xrl", 37).
 yyaction_26(TokenChars) ->
-     { error, "Invalid token \"" ++ TokenChars ++ "\"" } .
+     { error, ["Invalid token \"", TokenChars, "\"" ] } .
 
 -compile({inline,yyaction_27/2}).
 -file("src/lexer_erlang.xrl", 38).

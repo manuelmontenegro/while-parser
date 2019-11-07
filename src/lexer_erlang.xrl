@@ -36,7 +36,7 @@ do            : {token, {'do', TokenLine}}.
 begin         : {token, {'begin', TokenLine}}.
 {Identifier}  : {token, {identifier, TokenLine, list_to_binary(TokenChars)}}.
 {Integer}{LetterOrUnderscore} 
-              : {error, "Invalid token \"" ++ TokenChars ++ "\""}.
+              : {error, ["Invalid token \"", TokenChars, "\""]}.
 {Integer}     : {token, {integer, TokenLine, list_to_integer(TokenChars)}}.
 
 Erlang code.
