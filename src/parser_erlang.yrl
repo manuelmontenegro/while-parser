@@ -1,5 +1,5 @@
-Nonterminals exp stm stm_seq_aux stm_seq var_decl var_decls type fun_decl param_decls param_decl fun_decls program.
-Terminals '+' '-' '*' '<=' '==' '?' ':' '(' ')' 'true' 'false' '&&' '||' ':=' ';' '::'
+Nonterminals exp stm stm_seq var_decl var_decls type fun_decl param_decls param_decl fun_decls program exps.
+Terminals '+' '-' '*' '<=' '==' '?' ':' '(' ')' 'true' 'false' '&&' '||' ':=' ';' '::' ','
           integer identifier
           skip if then else while do begin end var int bool function ret.
 Rootsymbol program.
@@ -19,7 +19,7 @@ Left 200 '*'.
 
 exp -> integer      : { exp, literal, token_line('$1'), [{number, token_value('$1')}] }.
 exp -> 'true'       : { exp, literal, token_line('$1'), [{boolean, true}]}.
-exp -> 'false'       : { exp, literal, token_line('$1'), [{boolean, true}]}.
+exp -> 'false'       : { exp, literal, token_line('$1'), [{boolean, false}]}.
 exp -> identifier   : { exp, variable, token_line('$1'), [{name, token_value('$1')}] }.
 exp -> '-' integer  : { exp, literal, token_line('$1'), [{number, -token_value('$2')}]}.
 exp -> exp '+' exp  : { exp, add, ast_line('$1'), [{lhs, '$1'}, {rhs, '$3'}] }.
@@ -37,12 +37,16 @@ stm -> skip
   : { stm, skip, token_line('$1'), [] }.
 stm -> identifier ':=' exp
   : { stm, assignment, token_line('$1'), [{lhs, token_value('$1')}, {rhs, '$3'}] }.
+stm -> identifier ':=' identifier '(' ')'
+  : { stm, fun_app, token_line('$1'), [{lhs, token_value('$1')}, {fun_name, token_value('$3')}] }.
+stm -> identifier ':=' identifier '(' exps ')'
+  : { stm, fun_app, token_line('$1'), [{lhs, token_value('$1')}, {fun_name, token_value('$3')}, {args, '$5'}] }.
 stm -> if exp then stm_seq else stm_seq
   : { stm, 'if', token_line('$1'), [{condition, '$2'}, {'then', '$4'}, {'else', '$6'}] }.
 stm -> while exp do stm_seq
   : { stm, while, token_line('$1'), [{condition, '$2'}, {'body', '$4'}] }.
-stm -> begin var_decls ';' stm_seq end
-  : { stm, block, token_line('$1'), [{decls, '$2'}, {body, '$4'}]}.
+stm -> begin var_decls stm_seq end
+  : { stm, block, token_line('$1'), [{decls, '$2'}, {body, '$3'}]}.
 
 
 program -> fun_decls stm_seq
@@ -51,21 +55,19 @@ program -> fun_decls stm_seq
 fun_decls -> '$empty'             : [].
 fun_decls -> fun_decl fun_decls   : ['$1' | '$2'].
 
-fun_decl -> function identifier '(' param_decls ')' ret '(' param_decls ')' stm_seq end
+fun_decl -> function identifier '(' param_decls ')' ret '(' param_decl ')' stm_seq end
   : {declaration, fun_decl, token_line('$1'), [{function_name, token_value('$2')}, {params, '$4'}, {returns, '$8'}, {body, '$10'}]}.
 
-stm_seq -> stm_seq_aux      : '$1'.
-stm_seq -> stm_seq_aux ';'  : '$1'.
-
-stm_seq_aux -> stm                 : ['$1'].
-stm_seq_aux -> stm ';' stm_seq_aux : ['$1' | '$3'].
+stm_seq -> stm             : ['$1'].
+stm_seq -> stm ';'         : ['$1'].
+stm_seq -> stm ';' stm_seq : ['$1' | '$3'].
 
 var_decls -> '$empty'                : [].
-var_decls -> var_decl ';' var_decls  : ['$1' | '$3'].
+var_decls -> var_decl var_decls  : ['$1' | '$2'].
 
-var_decl -> var identifier ':=' exp           
+var_decl -> var identifier ':=' exp ';'           
   : {declaration, var_decl, token_line('$1'), [{lhs, token_value('$2')}, {rhs, '$4'}]}.
-var_decl -> var identifier '::' type ':=' exp
+var_decl -> var identifier '::' type ':=' exp ';'
   : {declaration, var_decl, token_line('$1'), [{lhs, token_value('$2')}, {rhs, '$6'}, {type, '$4'}]}.
 
 
@@ -77,6 +79,8 @@ param_decl -> identifier
 param_decl -> identifier '::' type 
   : [{declaration, param_decl, token_line('$1'), [{variable, token_value('$1')}, {type, '$3'}]}].
 
+exps -> exp           : ['$1'].
+exps -> exp ',' exps  : ['$1' | '$3'].
 
 type -> int   : {type, int, token_line('$1'), []}.
 type -> bool  : {type, bool, token_line('$1'), []}.

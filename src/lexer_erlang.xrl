@@ -38,6 +38,7 @@ else          : {token, {'else', TokenLine}}.
 while         : {token, {'while', TokenLine}}.
 do            : {token, {'do', TokenLine}}.
 begin         : {token, {'begin', TokenLine}}.
+var           : {token, {'var', TokenLine}}.
 int           : {token, {'int', TokenLine}}.
 bool          : {token, {'bool', TokenLine}}.
 {Identifier}  : {token, {identifier, TokenLine, list_to_binary(TokenChars)}}.
