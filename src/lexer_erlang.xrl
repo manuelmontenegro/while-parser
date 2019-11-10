@@ -25,6 +25,7 @@ Rules.
 \,            : {token, {',', TokenLine}}.
 \&\&          : {token, {'&&', TokenLine}}.
 \|\|          : {token, {'||', TokenLine}}.
+skip          : {token, {skip, TokenLine}}.
 function      : {token, {function, TokenLine}}.
 ret           : {token, {ret, TokenLine}}.
 end           : {token, {'end', TokenLine}}.
@@ -37,6 +38,8 @@ else          : {token, {'else', TokenLine}}.
 while         : {token, {'while', TokenLine}}.
 do            : {token, {'do', TokenLine}}.
 begin         : {token, {'begin', TokenLine}}.
+int           : {token, {'int', TokenLine}}.
+bool          : {token, {'bool', TokenLine}}.
 {Identifier}  : {token, {identifier, TokenLine, list_to_binary(TokenChars)}}.
 {Integer}{LetterOrUnderscore} 
               : {error, ["Invalid token \"", TokenChars, "\""]}.
