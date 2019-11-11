@@ -1,6 +1,6 @@
-# WhileParser
+# A parser for the While language
 
-**TODO: Add description**
+This is an auxiliary library used for other projects related to the course on _Static Analysis of Programs and Constraint Solving_.
 
 ## Installation
 
@@ -10,7 +10,7 @@ by adding `while_parser` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:while_parser, "~> 0.1.0"}
+    {:while_parser, github: "manuelmontenegro/while_parser"}
   ]
 end
 ```
