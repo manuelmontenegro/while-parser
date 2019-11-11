@@ -1,6 +1,6 @@
 -module(parser_erlang).
 -export([parse/1, parse_and_scan/1, format_error/1]).
--file("src/parser_erlang.yrl", 112).
+-file("src/parser_erlang.yrl", 129).
 
 token_value({_, Val}) -> Val;
 token_value({_, _, Val}) -> Val.
@@ -1626,28 +1626,28 @@ yeccgoto_var_decls(109=_S, Cat, Ss, Stack, T, Ts, Tzr) ->
  yeccpars2_120(_S, Cat, Ss, Stack, T, Ts, Tzr).
 
 -compile({inline,yeccpars2_0_/1}).
--file("src/parser_erlang.yrl", 59).
+-file("src/parser_erlang.yrl", 76).
 yeccpars2_0_(__Stack0) ->
  [begin
    [ ]
   end | __Stack0].
 
 -compile({inline,yeccpars2_3_/1}).
--file("src/parser_erlang.yrl", 59).
+-file("src/parser_erlang.yrl", 76).
 yeccpars2_3_(__Stack0) ->
  [begin
    [ ]
   end | __Stack0].
 
 -compile({inline,yeccpars2_6_/1}).
--file("src/parser_erlang.yrl", 79).
+-file("src/parser_erlang.yrl", 96).
 yeccpars2_6_(__Stack0) ->
  [begin
    [ ]
   end | __Stack0].
 
 -compile({inline,yeccpars2_8_/1}).
--file("src/parser_erlang.yrl", 81).
+-file("src/parser_erlang.yrl", 98).
 yeccpars2_8_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -1655,7 +1655,7 @@ yeccpars2_8_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_10_/1}).
--file("src/parser_erlang.yrl", 86).
+-file("src/parser_erlang.yrl", 103).
 yeccpars2_10_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -1663,7 +1663,7 @@ yeccpars2_10_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_12_/1}).
--file("src/parser_erlang.yrl", 88).
+-file("src/parser_erlang.yrl", 105).
 yeccpars2_12_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1671,7 +1671,7 @@ yeccpars2_12_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_15_/1}).
--file("src/parser_erlang.yrl", 100).
+-file("src/parser_erlang.yrl", 117).
 yeccpars2_15_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -1679,7 +1679,7 @@ yeccpars2_15_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_16_/1}).
--file("src/parser_erlang.yrl", 99).
+-file("src/parser_erlang.yrl", 116).
 yeccpars2_16_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -1687,7 +1687,7 @@ yeccpars2_16_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_18_/1}).
--file("src/parser_erlang.yrl", 102).
+-file("src/parser_erlang.yrl", 119).
 yeccpars2_18_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1695,7 +1695,7 @@ yeccpars2_18_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_19_/1}).
--file("src/parser_erlang.yrl", 103).
+-file("src/parser_erlang.yrl", 120).
 yeccpars2_19_(__Stack0) ->
  [__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1703,7 +1703,7 @@ yeccpars2_19_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_22_/1}).
--file("src/parser_erlang.yrl", 105).
+-file("src/parser_erlang.yrl", 122).
 yeccpars2_22_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -1711,7 +1711,7 @@ yeccpars2_22_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_24_/1}).
--file("src/parser_erlang.yrl", 101).
+-file("src/parser_erlang.yrl", 118).
 yeccpars2_24_(__Stack0) ->
  [__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1719,7 +1719,7 @@ yeccpars2_24_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_26_/1}).
--file("src/parser_erlang.yrl", 106).
+-file("src/parser_erlang.yrl", 123).
 yeccpars2_26_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1727,7 +1727,7 @@ yeccpars2_26_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_28_/1}).
--file("src/parser_erlang.yrl", 82).
+-file("src/parser_erlang.yrl", 99).
 yeccpars2_28_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1735,7 +1735,7 @@ yeccpars2_28_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_35_/1}).
--file("src/parser_erlang.yrl", 65).
+-file("src/parser_erlang.yrl", 82).
 yeccpars2_35_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -1743,14 +1743,14 @@ yeccpars2_35_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_37_/1}).
--file("src/parser_erlang.yrl", 69).
+-file("src/parser_erlang.yrl", 86).
 yeccpars2_37_(__Stack0) ->
  [begin
    [ ]
   end | __Stack0].
 
 -compile({inline,yeccpars2_41_/1}).
--file("src/parser_erlang.yrl", 39).
+-file("src/parser_erlang.yrl", 56).
 yeccpars2_41_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -1758,7 +1758,7 @@ yeccpars2_41_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_47_/1}).
--file("src/parser_erlang.yrl", 18).
+-file("src/parser_erlang.yrl", 35).
 yeccpars2_47_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -1766,7 +1766,7 @@ yeccpars2_47_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_48_/1}).
--file("src/parser_erlang.yrl", 19).
+-file("src/parser_erlang.yrl", 36).
 yeccpars2_48_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -1774,7 +1774,7 @@ yeccpars2_48_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_49_/1}).
--file("src/parser_erlang.yrl", 16).
+-file("src/parser_erlang.yrl", 33).
 yeccpars2_49_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -1782,7 +1782,7 @@ yeccpars2_49_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_50_/1}).
--file("src/parser_erlang.yrl", 32).
+-file("src/parser_erlang.yrl", 49).
 yeccpars2_50_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -1790,7 +1790,7 @@ yeccpars2_50_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_51_/1}).
--file("src/parser_erlang.yrl", 17).
+-file("src/parser_erlang.yrl", 34).
 yeccpars2_51_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -1798,7 +1798,7 @@ yeccpars2_51_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_63_/1}).
--file("src/parser_erlang.yrl", 27).
+-file("src/parser_erlang.yrl", 44).
 yeccpars2_63_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1806,7 +1806,7 @@ yeccpars2_63_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_65_/1}).
--file("src/parser_erlang.yrl", 36).
+-file("src/parser_erlang.yrl", 53).
 yeccpars2_65_(__Stack0) ->
  [__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1814,7 +1814,7 @@ yeccpars2_65_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_68_\'$end\''/1}).
--file("src/parser_erlang.yrl", 29).
+-file("src/parser_erlang.yrl", 46).
 'yeccpars2_68_\'$end\''(__Stack0) ->
  [__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1822,7 +1822,7 @@ yeccpars2_65_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_68_\')\''/1}).
--file("src/parser_erlang.yrl", 29).
+-file("src/parser_erlang.yrl", 46).
 'yeccpars2_68_\')\''(__Stack0) ->
  [__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1830,7 +1830,7 @@ yeccpars2_65_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_68_\',\''/1}).
--file("src/parser_erlang.yrl", 29).
+-file("src/parser_erlang.yrl", 46).
 'yeccpars2_68_\',\''(__Stack0) ->
  [__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1838,7 +1838,7 @@ yeccpars2_65_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_68_\'.\''/1}).
--file("src/parser_erlang.yrl", 29).
+-file("src/parser_erlang.yrl", 46).
 'yeccpars2_68_\'.\''(__Stack0) ->
  [__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1846,7 +1846,7 @@ yeccpars2_65_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_68_\':\''/1}).
--file("src/parser_erlang.yrl", 29).
+-file("src/parser_erlang.yrl", 46).
 'yeccpars2_68_\':\''(__Stack0) ->
  [__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1854,7 +1854,7 @@ yeccpars2_65_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_68_\';\''/1}).
--file("src/parser_erlang.yrl", 29).
+-file("src/parser_erlang.yrl", 46).
 'yeccpars2_68_\';\''(__Stack0) ->
  [__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1862,7 +1862,7 @@ yeccpars2_65_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_68_\']\''/1}).
--file("src/parser_erlang.yrl", 29).
+-file("src/parser_erlang.yrl", 46).
 'yeccpars2_68_\']\''(__Stack0) ->
  [__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1870,7 +1870,7 @@ yeccpars2_65_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_68_do/1}).
--file("src/parser_erlang.yrl", 29).
+-file("src/parser_erlang.yrl", 46).
 yeccpars2_68_do(__Stack0) ->
  [__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1878,7 +1878,7 @@ yeccpars2_68_do(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_68_else/1}).
--file("src/parser_erlang.yrl", 29).
+-file("src/parser_erlang.yrl", 46).
 yeccpars2_68_else(__Stack0) ->
  [__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1886,7 +1886,7 @@ yeccpars2_68_else(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_68_\'end\''/1}).
--file("src/parser_erlang.yrl", 29).
+-file("src/parser_erlang.yrl", 46).
 'yeccpars2_68_\'end\''(__Stack0) ->
  [__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1894,7 +1894,7 @@ yeccpars2_68_else(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_68_then/1}).
--file("src/parser_erlang.yrl", 29).
+-file("src/parser_erlang.yrl", 46).
 yeccpars2_68_then(__Stack0) ->
  [__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1902,7 +1902,7 @@ yeccpars2_68_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_68_\'|\''/1}).
--file("src/parser_erlang.yrl", 29).
+-file("src/parser_erlang.yrl", 46).
 'yeccpars2_68_\'|\''(__Stack0) ->
  [__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1910,7 +1910,7 @@ yeccpars2_68_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_69_\'$end\''/1}).
--file("src/parser_erlang.yrl", 25).
+-file("src/parser_erlang.yrl", 42).
 'yeccpars2_69_\'$end\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1918,7 +1918,7 @@ yeccpars2_68_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_69_\'&&\''/1}).
--file("src/parser_erlang.yrl", 25).
+-file("src/parser_erlang.yrl", 42).
 'yeccpars2_69_\'&&\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1926,7 +1926,7 @@ yeccpars2_68_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_69_\')\''/1}).
--file("src/parser_erlang.yrl", 25).
+-file("src/parser_erlang.yrl", 42).
 'yeccpars2_69_\')\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1934,7 +1934,7 @@ yeccpars2_68_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_69_\',\''/1}).
--file("src/parser_erlang.yrl", 25).
+-file("src/parser_erlang.yrl", 42).
 'yeccpars2_69_\',\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1942,7 +1942,7 @@ yeccpars2_68_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_69_\'.\''/1}).
--file("src/parser_erlang.yrl", 25).
+-file("src/parser_erlang.yrl", 42).
 'yeccpars2_69_\'.\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1950,7 +1950,7 @@ yeccpars2_68_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_69_\':\''/1}).
--file("src/parser_erlang.yrl", 25).
+-file("src/parser_erlang.yrl", 42).
 'yeccpars2_69_\':\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1958,7 +1958,7 @@ yeccpars2_68_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_69_\';\''/1}).
--file("src/parser_erlang.yrl", 25).
+-file("src/parser_erlang.yrl", 42).
 'yeccpars2_69_\';\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1966,7 +1966,7 @@ yeccpars2_68_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_69_\'?\''/1}).
--file("src/parser_erlang.yrl", 25).
+-file("src/parser_erlang.yrl", 42).
 'yeccpars2_69_\'?\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1974,7 +1974,7 @@ yeccpars2_68_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_69_\']\''/1}).
--file("src/parser_erlang.yrl", 25).
+-file("src/parser_erlang.yrl", 42).
 'yeccpars2_69_\']\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1982,7 +1982,7 @@ yeccpars2_68_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_69_do/1}).
--file("src/parser_erlang.yrl", 25).
+-file("src/parser_erlang.yrl", 42).
 yeccpars2_69_do(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1990,7 +1990,7 @@ yeccpars2_69_do(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_69_else/1}).
--file("src/parser_erlang.yrl", 25).
+-file("src/parser_erlang.yrl", 42).
 yeccpars2_69_else(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -1998,7 +1998,7 @@ yeccpars2_69_else(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_69_\'end\''/1}).
--file("src/parser_erlang.yrl", 25).
+-file("src/parser_erlang.yrl", 42).
 'yeccpars2_69_\'end\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2006,7 +2006,7 @@ yeccpars2_69_else(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_69_then/1}).
--file("src/parser_erlang.yrl", 25).
+-file("src/parser_erlang.yrl", 42).
 yeccpars2_69_then(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2014,7 +2014,7 @@ yeccpars2_69_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_69_\'|\''/1}).
--file("src/parser_erlang.yrl", 25).
+-file("src/parser_erlang.yrl", 42).
 'yeccpars2_69_\'|\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2022,7 +2022,7 @@ yeccpars2_69_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_69_\'||\''/1}).
--file("src/parser_erlang.yrl", 25).
+-file("src/parser_erlang.yrl", 42).
 'yeccpars2_69_\'||\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2030,7 +2030,7 @@ yeccpars2_69_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_70_\'$end\''/1}).
--file("src/parser_erlang.yrl", 24).
+-file("src/parser_erlang.yrl", 41).
 'yeccpars2_70_\'$end\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2038,7 +2038,7 @@ yeccpars2_69_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_70_\'&&\''/1}).
--file("src/parser_erlang.yrl", 24).
+-file("src/parser_erlang.yrl", 41).
 'yeccpars2_70_\'&&\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2046,7 +2046,7 @@ yeccpars2_69_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_70_\')\''/1}).
--file("src/parser_erlang.yrl", 24).
+-file("src/parser_erlang.yrl", 41).
 'yeccpars2_70_\')\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2054,7 +2054,7 @@ yeccpars2_69_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_70_\',\''/1}).
--file("src/parser_erlang.yrl", 24).
+-file("src/parser_erlang.yrl", 41).
 'yeccpars2_70_\',\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2062,7 +2062,7 @@ yeccpars2_69_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_70_\'.\''/1}).
--file("src/parser_erlang.yrl", 24).
+-file("src/parser_erlang.yrl", 41).
 'yeccpars2_70_\'.\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2070,7 +2070,7 @@ yeccpars2_69_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_70_\':\''/1}).
--file("src/parser_erlang.yrl", 24).
+-file("src/parser_erlang.yrl", 41).
 'yeccpars2_70_\':\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2078,7 +2078,7 @@ yeccpars2_69_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_70_\';\''/1}).
--file("src/parser_erlang.yrl", 24).
+-file("src/parser_erlang.yrl", 41).
 'yeccpars2_70_\';\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2086,7 +2086,7 @@ yeccpars2_69_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_70_\'?\''/1}).
--file("src/parser_erlang.yrl", 24).
+-file("src/parser_erlang.yrl", 41).
 'yeccpars2_70_\'?\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2094,7 +2094,7 @@ yeccpars2_69_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_70_\']\''/1}).
--file("src/parser_erlang.yrl", 24).
+-file("src/parser_erlang.yrl", 41).
 'yeccpars2_70_\']\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2102,7 +2102,7 @@ yeccpars2_69_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_70_do/1}).
--file("src/parser_erlang.yrl", 24).
+-file("src/parser_erlang.yrl", 41).
 yeccpars2_70_do(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2110,7 +2110,7 @@ yeccpars2_70_do(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_70_else/1}).
--file("src/parser_erlang.yrl", 24).
+-file("src/parser_erlang.yrl", 41).
 yeccpars2_70_else(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2118,7 +2118,7 @@ yeccpars2_70_else(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_70_\'end\''/1}).
--file("src/parser_erlang.yrl", 24).
+-file("src/parser_erlang.yrl", 41).
 'yeccpars2_70_\'end\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2126,7 +2126,7 @@ yeccpars2_70_else(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_70_then/1}).
--file("src/parser_erlang.yrl", 24).
+-file("src/parser_erlang.yrl", 41).
 yeccpars2_70_then(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2134,7 +2134,7 @@ yeccpars2_70_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_70_\'|\''/1}).
--file("src/parser_erlang.yrl", 24).
+-file("src/parser_erlang.yrl", 41).
 'yeccpars2_70_\'|\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2142,7 +2142,7 @@ yeccpars2_70_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,'yeccpars2_70_\'||\''/1}).
--file("src/parser_erlang.yrl", 24).
+-file("src/parser_erlang.yrl", 41).
 'yeccpars2_70_\'||\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2150,7 +2150,7 @@ yeccpars2_70_then(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_71_/1}).
--file("src/parser_erlang.yrl", 33).
+-file("src/parser_erlang.yrl", 50).
 yeccpars2_71_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2158,7 +2158,7 @@ yeccpars2_71_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_72_/1}).
--file("src/parser_erlang.yrl", 34).
+-file("src/parser_erlang.yrl", 51).
 yeccpars2_72_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2166,7 +2166,7 @@ yeccpars2_72_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_73_/1}).
--file("src/parser_erlang.yrl", 22).
+-file("src/parser_erlang.yrl", 39).
 yeccpars2_73_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2174,7 +2174,7 @@ yeccpars2_73_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_74_/1}).
--file("src/parser_erlang.yrl", 21).
+-file("src/parser_erlang.yrl", 38).
 yeccpars2_74_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2182,7 +2182,7 @@ yeccpars2_74_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_75_/1}).
--file("src/parser_erlang.yrl", 23).
+-file("src/parser_erlang.yrl", 40).
 yeccpars2_75_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2190,7 +2190,7 @@ yeccpars2_75_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_76_/1}).
--file("src/parser_erlang.yrl", 26).
+-file("src/parser_erlang.yrl", 43).
 yeccpars2_76_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2198,7 +2198,7 @@ yeccpars2_76_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_77_/1}).
--file("src/parser_erlang.yrl", 20).
+-file("src/parser_erlang.yrl", 37).
 yeccpars2_77_(__Stack0) ->
  [__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2206,7 +2206,7 @@ yeccpars2_77_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_79_/1}).
--file("src/parser_erlang.yrl", 30).
+-file("src/parser_erlang.yrl", 47).
 yeccpars2_79_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2214,7 +2214,7 @@ yeccpars2_79_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_82_/1}).
--file("src/parser_erlang.yrl", 93).
+-file("src/parser_erlang.yrl", 110).
 yeccpars2_82_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -2222,7 +2222,7 @@ yeccpars2_82_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_84_/1}).
--file("src/parser_erlang.yrl", 94).
+-file("src/parser_erlang.yrl", 111).
 yeccpars2_84_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2230,7 +2230,7 @@ yeccpars2_84_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_85_/1}).
--file("src/parser_erlang.yrl", 31).
+-file("src/parser_erlang.yrl", 48).
 yeccpars2_85_(__Stack0) ->
  [__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2238,7 +2238,7 @@ yeccpars2_85_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_88_/1}).
--file("src/parser_erlang.yrl", 49).
+-file("src/parser_erlang.yrl", 66).
 yeccpars2_88_(__Stack0) ->
  [__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2246,7 +2246,7 @@ yeccpars2_88_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_94_/1}).
--file("src/parser_erlang.yrl", 53).
+-file("src/parser_erlang.yrl", 70).
 yeccpars2_94_(__Stack0) ->
  [__7,__6,__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2254,7 +2254,7 @@ yeccpars2_94_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_100_/1}).
--file("src/parser_erlang.yrl", 47).
+-file("src/parser_erlang.yrl", 64).
 yeccpars2_100_(__Stack0) ->
  [__7,__6,__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2262,7 +2262,7 @@ yeccpars2_100_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_102_/1}).
--file("src/parser_erlang.yrl", 41).
+-file("src/parser_erlang.yrl", 58).
 yeccpars2_102_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2270,7 +2270,7 @@ yeccpars2_102_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_103_/1}).
--file("src/parser_erlang.yrl", 19).
+-file("src/parser_erlang.yrl", 36).
 yeccpars2_103_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -2278,14 +2278,14 @@ yeccpars2_103_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_104_/1}).
--file("src/parser_erlang.yrl", 91).
+-file("src/parser_erlang.yrl", 108).
 yeccpars2_104_(__Stack0) ->
  [begin
    [ ]
   end | __Stack0].
 
 -compile({inline,yeccpars2_107_/1}).
--file("src/parser_erlang.yrl", 43).
+-file("src/parser_erlang.yrl", 60).
 yeccpars2_107_(__Stack0) ->
  [__6,__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2293,14 +2293,14 @@ yeccpars2_107_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_109_/1}).
--file("src/parser_erlang.yrl", 69).
+-file("src/parser_erlang.yrl", 86).
 yeccpars2_109_(__Stack0) ->
  [begin
    [ ]
   end | __Stack0].
 
 -compile({inline,yeccpars2_115_/1}).
--file("src/parser_erlang.yrl", 73).
+-file("src/parser_erlang.yrl", 90).
 yeccpars2_115_(__Stack0) ->
  [__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2308,7 +2308,7 @@ yeccpars2_115_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_119_/1}).
--file("src/parser_erlang.yrl", 75).
+-file("src/parser_erlang.yrl", 92).
 yeccpars2_119_(__Stack0) ->
  [__7,__6,__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2316,7 +2316,7 @@ yeccpars2_119_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_120_/1}).
--file("src/parser_erlang.yrl", 70).
+-file("src/parser_erlang.yrl", 87).
 yeccpars2_120_(__Stack0) ->
  [__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2324,7 +2324,7 @@ yeccpars2_120_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_122_/1}).
--file("src/parser_erlang.yrl", 51).
+-file("src/parser_erlang.yrl", 68).
 yeccpars2_122_(__Stack0) ->
  [__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2332,7 +2332,7 @@ yeccpars2_122_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_126_/1}).
--file("src/parser_erlang.yrl", 96).
+-file("src/parser_erlang.yrl", 113).
 yeccpars2_126_(__Stack0) ->
  [__1 | __Stack] = __Stack0,
  [begin
@@ -2340,7 +2340,7 @@ yeccpars2_126_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_128_/1}).
--file("src/parser_erlang.yrl", 97).
+-file("src/parser_erlang.yrl", 114).
 yeccpars2_128_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2348,7 +2348,7 @@ yeccpars2_128_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_131_/1}).
--file("src/parser_erlang.yrl", 45).
+-file("src/parser_erlang.yrl", 62).
 yeccpars2_131_(__Stack0) ->
  [__7,__6,__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2356,7 +2356,7 @@ yeccpars2_131_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_132_/1}).
--file("src/parser_erlang.yrl", 66).
+-file("src/parser_erlang.yrl", 83).
 yeccpars2_132_(__Stack0) ->
  [__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2364,7 +2364,7 @@ yeccpars2_132_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_133_/1}).
--file("src/parser_erlang.yrl", 67).
+-file("src/parser_erlang.yrl", 84).
 yeccpars2_133_(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2372,7 +2372,7 @@ yeccpars2_133_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_134_/1}).
--file("src/parser_erlang.yrl", 63).
+-file("src/parser_erlang.yrl", 80).
 yeccpars2_134_(__Stack0) ->
  [__11,__10,__9,__8,__7,__6,__5,__4,__3,__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2380,7 +2380,7 @@ yeccpars2_134_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_135_/1}).
--file("src/parser_erlang.yrl", 60).
+-file("src/parser_erlang.yrl", 77).
 yeccpars2_135_(__Stack0) ->
  [__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2388,7 +2388,7 @@ yeccpars2_135_(__Stack0) ->
   end | __Stack].
 
 -compile({inline,yeccpars2_136_/1}).
--file("src/parser_erlang.yrl", 57).
+-file("src/parser_erlang.yrl", 74).
 yeccpars2_136_(__Stack0) ->
  [__2,__1 | __Stack] = __Stack0,
  [begin
@@ -2396,4 +2396,4 @@ yeccpars2_136_(__Stack0) ->
   end | __Stack].
 
 
--file("src/parser_erlang.yrl", 125).
+-file("src/parser_erlang.yrl", 142).

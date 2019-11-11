@@ -12,7 +12,7 @@
 -export([format_error/1]).
 
 %% User code. This is placed here to allow extra attributes.
--file("src/lexer_erlang.xrl", 57).
+-file("src/lexer_erlang.xrl", 74).
 
 -file("/usr/lib64/erlang/lib/parsetools-2.1.8/include/leexinc.hrl", 14).
 
@@ -1403,217 +1403,217 @@ yyaction(42, TokenLen, YYtcs, TokenLine) ->
 yyaction(_, _, _, _) -> error.
 
 -compile({inline,yyaction_0/0}).
--file("src/lexer_erlang.xrl", 10).
+-file("src/lexer_erlang.xrl", 27).
 yyaction_0() ->
      skip_token .
 
 -compile({inline,yyaction_1/1}).
--file("src/lexer_erlang.xrl", 11).
+-file("src/lexer_erlang.xrl", 28).
 yyaction_1(TokenLine) ->
      { token, { '(', TokenLine } } .
 
 -compile({inline,yyaction_2/1}).
--file("src/lexer_erlang.xrl", 12).
+-file("src/lexer_erlang.xrl", 29).
 yyaction_2(TokenLine) ->
      { token, { ')', TokenLine } } .
 
 -compile({inline,yyaction_3/1}).
--file("src/lexer_erlang.xrl", 13).
+-file("src/lexer_erlang.xrl", 30).
 yyaction_3(TokenLine) ->
      { token, { '[', TokenLine } } .
 
 -compile({inline,yyaction_4/1}).
--file("src/lexer_erlang.xrl", 14).
+-file("src/lexer_erlang.xrl", 31).
 yyaction_4(TokenLine) ->
      { token, { ']', TokenLine } } .
 
 -compile({inline,yyaction_5/1}).
--file("src/lexer_erlang.xrl", 15).
+-file("src/lexer_erlang.xrl", 32).
 yyaction_5(TokenLine) ->
      { token, { '|', TokenLine } } .
 
 -compile({inline,yyaction_6/1}).
--file("src/lexer_erlang.xrl", 16).
+-file("src/lexer_erlang.xrl", 33).
 yyaction_6(TokenLine) ->
      { token, { '::', TokenLine } } .
 
 -compile({inline,yyaction_7/1}).
--file("src/lexer_erlang.xrl", 17).
+-file("src/lexer_erlang.xrl", 34).
 yyaction_7(TokenLine) ->
      { token, { '+', TokenLine } } .
 
 -compile({inline,yyaction_8/1}).
--file("src/lexer_erlang.xrl", 18).
+-file("src/lexer_erlang.xrl", 35).
 yyaction_8(TokenLine) ->
      { token, { '-', TokenLine } } .
 
 -compile({inline,yyaction_9/1}).
--file("src/lexer_erlang.xrl", 19).
+-file("src/lexer_erlang.xrl", 36).
 yyaction_9(TokenLine) ->
      { token, { '*', TokenLine } } .
 
 -compile({inline,yyaction_10/1}).
--file("src/lexer_erlang.xrl", 20).
+-file("src/lexer_erlang.xrl", 37).
 yyaction_10(TokenLine) ->
      { token, { '<=', TokenLine } } .
 
 -compile({inline,yyaction_11/1}).
--file("src/lexer_erlang.xrl", 21).
+-file("src/lexer_erlang.xrl", 38).
 yyaction_11(TokenLine) ->
      { token, { '?', TokenLine } } .
 
 -compile({inline,yyaction_12/1}).
--file("src/lexer_erlang.xrl", 22).
+-file("src/lexer_erlang.xrl", 39).
 yyaction_12(TokenLine) ->
      { token, { ':', TokenLine } } .
 
 -compile({inline,yyaction_13/1}).
--file("src/lexer_erlang.xrl", 23).
+-file("src/lexer_erlang.xrl", 40).
 yyaction_13(TokenLine) ->
      { token, { ':=', TokenLine } } .
 
 -compile({inline,yyaction_14/1}).
--file("src/lexer_erlang.xrl", 24).
+-file("src/lexer_erlang.xrl", 41).
 yyaction_14(TokenLine) ->
      { token, { '==', TokenLine } } .
 
 -compile({inline,yyaction_15/1}).
--file("src/lexer_erlang.xrl", 25).
+-file("src/lexer_erlang.xrl", 42).
 yyaction_15(TokenLine) ->
      { token, { ';', TokenLine } } .
 
 -compile({inline,yyaction_16/1}).
--file("src/lexer_erlang.xrl", 26).
+-file("src/lexer_erlang.xrl", 43).
 yyaction_16(TokenLine) ->
      { token, { ',', TokenLine } } .
 
 -compile({inline,yyaction_17/1}).
--file("src/lexer_erlang.xrl", 27).
+-file("src/lexer_erlang.xrl", 44).
 yyaction_17(TokenLine) ->
      { token, { '.', TokenLine } } .
 
 -compile({inline,yyaction_18/1}).
--file("src/lexer_erlang.xrl", 28).
+-file("src/lexer_erlang.xrl", 45).
 yyaction_18(TokenLine) ->
      { token, { '&&', TokenLine } } .
 
 -compile({inline,yyaction_19/1}).
--file("src/lexer_erlang.xrl", 29).
+-file("src/lexer_erlang.xrl", 46).
 yyaction_19(TokenLine) ->
      { token, { '||', TokenLine } } .
 
 -compile({inline,yyaction_20/1}).
--file("src/lexer_erlang.xrl", 30).
+-file("src/lexer_erlang.xrl", 47).
 yyaction_20(TokenLine) ->
      { token, { skip, TokenLine } } .
 
 -compile({inline,yyaction_21/1}).
--file("src/lexer_erlang.xrl", 31).
+-file("src/lexer_erlang.xrl", 48).
 yyaction_21(TokenLine) ->
      { token, { function, TokenLine } } .
 
 -compile({inline,yyaction_22/1}).
--file("src/lexer_erlang.xrl", 32).
+-file("src/lexer_erlang.xrl", 49).
 yyaction_22(TokenLine) ->
      { token, { ret, TokenLine } } .
 
 -compile({inline,yyaction_23/1}).
--file("src/lexer_erlang.xrl", 33).
+-file("src/lexer_erlang.xrl", 50).
 yyaction_23(TokenLine) ->
      { token, { 'end', TokenLine } } .
 
 -compile({inline,yyaction_24/1}).
--file("src/lexer_erlang.xrl", 34).
+-file("src/lexer_erlang.xrl", 51).
 yyaction_24(TokenLine) ->
      { token, { true, TokenLine } } .
 
 -compile({inline,yyaction_25/1}).
--file("src/lexer_erlang.xrl", 35).
+-file("src/lexer_erlang.xrl", 52).
 yyaction_25(TokenLine) ->
      { token, { false, TokenLine } } .
 
 -compile({inline,yyaction_26/1}).
--file("src/lexer_erlang.xrl", 36).
+-file("src/lexer_erlang.xrl", 53).
 yyaction_26(TokenLine) ->
      { token, { in, TokenLine } } .
 
 -compile({inline,yyaction_27/1}).
--file("src/lexer_erlang.xrl", 37).
+-file("src/lexer_erlang.xrl", 54).
 yyaction_27(TokenLine) ->
      { token, { 'if', TokenLine } } .
 
 -compile({inline,yyaction_28/1}).
--file("src/lexer_erlang.xrl", 38).
+-file("src/lexer_erlang.xrl", 55).
 yyaction_28(TokenLine) ->
      { token, { ifnil, TokenLine } } .
 
 -compile({inline,yyaction_29/1}).
--file("src/lexer_erlang.xrl", 39).
+-file("src/lexer_erlang.xrl", 56).
 yyaction_29(TokenLine) ->
      { token, { then, TokenLine } } .
 
 -compile({inline,yyaction_30/1}).
--file("src/lexer_erlang.xrl", 40).
+-file("src/lexer_erlang.xrl", 57).
 yyaction_30(TokenLine) ->
      { token, { else, TokenLine } } .
 
 -compile({inline,yyaction_31/1}).
--file("src/lexer_erlang.xrl", 41).
+-file("src/lexer_erlang.xrl", 58).
 yyaction_31(TokenLine) ->
      { token, { while, TokenLine } } .
 
 -compile({inline,yyaction_32/1}).
--file("src/lexer_erlang.xrl", 42).
+-file("src/lexer_erlang.xrl", 59).
 yyaction_32(TokenLine) ->
      { token, { do, TokenLine } } .
 
 -compile({inline,yyaction_33/1}).
--file("src/lexer_erlang.xrl", 43).
+-file("src/lexer_erlang.xrl", 60).
 yyaction_33(TokenLine) ->
      { token, { 'begin', TokenLine } } .
 
 -compile({inline,yyaction_34/1}).
--file("src/lexer_erlang.xrl", 44).
+-file("src/lexer_erlang.xrl", 61).
 yyaction_34(TokenLine) ->
      { token, { var, TokenLine } } .
 
 -compile({inline,yyaction_35/1}).
--file("src/lexer_erlang.xrl", 45).
+-file("src/lexer_erlang.xrl", 62).
 yyaction_35(TokenLine) ->
      { token, { int, TokenLine } } .
 
 -compile({inline,yyaction_36/1}).
--file("src/lexer_erlang.xrl", 46).
+-file("src/lexer_erlang.xrl", 63).
 yyaction_36(TokenLine) ->
      { token, { bool, TokenLine } } .
 
 -compile({inline,yyaction_37/1}).
--file("src/lexer_erlang.xrl", 47).
+-file("src/lexer_erlang.xrl", 64).
 yyaction_37(TokenLine) ->
      { token, { hd, TokenLine } } .
 
 -compile({inline,yyaction_38/1}).
--file("src/lexer_erlang.xrl", 48).
+-file("src/lexer_erlang.xrl", 65).
 yyaction_38(TokenLine) ->
      { token, { tl, TokenLine } } .
 
 -compile({inline,yyaction_39/1}).
--file("src/lexer_erlang.xrl", 49).
+-file("src/lexer_erlang.xrl", 66).
 yyaction_39(TokenLine) ->
      { token, { nil, TokenLine } } .
 
 -compile({inline,yyaction_40/2}).
--file("src/lexer_erlang.xrl", 50).
+-file("src/lexer_erlang.xrl", 67).
 yyaction_40(TokenChars, TokenLine) ->
      { token, { identifier, TokenLine, list_to_binary (TokenChars) } } .
 
 -compile({inline,yyaction_41/1}).
--file("src/lexer_erlang.xrl", 52).
+-file("src/lexer_erlang.xrl", 69).
 yyaction_41(TokenChars) ->
      { error, ["Invalid token \"", TokenChars, "\"" ] } .
 
 -compile({inline,yyaction_42/2}).
--file("src/lexer_erlang.xrl", 53).
+-file("src/lexer_erlang.xrl", 70).
 yyaction_42(TokenChars, TokenLine) ->
      { token, { integer, TokenLine, list_to_integer (TokenChars) } } .
 
