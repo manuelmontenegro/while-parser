@@ -315,6 +315,171 @@ defmodule WhileParser.ParserTest do
              parse("z := f()")
   end
 
+  test "simple function declaration" do
+    assert {:ok,
+            {:program, :program, 1,
+             [
+               functions: [
+                 {:declaration, :fun_decl, 1,
+                  [
+                    function_name: "f",
+                    params: [[{:declaration, :param_decl, 1, [variable: "x"]}]],
+                    returns: [{:declaration, :param_decl, 1, [variable: "y"]}],
+                    body: [
+                      {:stm, :assignment, 1,
+                       [
+                         lhs: "y",
+                         rhs:
+                           {:exp, :add, 1,
+                            [
+                              lhs: {:exp, :variable, 1, [name: "x"]},
+                              rhs: {:exp, :literal, 1, [number: 1]}
+                            ]}
+                       ]}
+                    ]
+                  ]}
+               ],
+               main_stm: [{:stm, :skip, 1, []}]
+             ]}} == parse("function f(x) ret (y) y := x + 1 end skip")
+  end
+
+  test "simple function declaration with several parameters" do
+    assert {:ok,
+            {:program, :program, 1,
+             [
+               functions: [
+                 {:declaration, :fun_decl, 1,
+                  [
+                    function_name: "f",
+                    params: [
+                      [
+                        {:declaration, :param_decl, 1,
+                         [variable: "x", type: {:type, :int, 1, []}]}
+                      ],
+                      [
+                        {:declaration, :param_decl, 1,
+                         [variable: "z", type: {:type, :int, 1, []}]}
+                      ]
+                    ],
+                    returns: [{:declaration, :param_decl, 1, [variable: "y"]}],
+                    body: [
+                      {:stm, :assignment, 1,
+                       [
+                         lhs: "y",
+                         rhs:
+                           {:exp, :mul, 1,
+                            [
+                              lhs: {:exp, :variable, 1, [name: "x"]},
+                              rhs: {:exp, :variable, 1, [name: "z"]}
+                            ]}
+                       ]}
+                    ]
+                  ]}
+               ],
+               main_stm: [{:stm, :skip, 1, []}]
+             ]}} == parse("function f(x :: int, z :: int) ret (y) y := x * z end skip")
+  end
+
+  test "simple function declaration with several parameters and type of a result" do
+    assert {:ok,
+            {:program, :program, 1,
+             [
+               functions: [
+                 {:declaration, :fun_decl, 1,
+                  [
+                    function_name: "f",
+                    params: [
+                      [
+                        {:declaration, :param_decl, 1,
+                         [variable: "x", type: {:type, :int, 1, []}]}
+                      ],
+                      [
+                        {:declaration, :param_decl, 1,
+                         [variable: "z", type: {:type, :int, 1, []}]}
+                      ]
+                    ],
+                    returns: [
+                      {:declaration, :param_decl, 1, [variable: "y", type: {:type, :bool, 1, []}]}
+                    ],
+                    body: [
+                      {:stm, :assignment, 1,
+                       [
+                         lhs: "y",
+                         rhs:
+                           {:exp, :lt, 1,
+                            [
+                              lhs: {:exp, :variable, 1, [name: "x"]},
+                              rhs: {:exp, :variable, 1, [name: "z"]}
+                            ]}
+                       ]}
+                    ]
+                  ]}
+               ],
+               main_stm: [{:stm, :skip, 1, []}]
+             ]}} == parse("function f(x :: int, z :: int) ret (y :: bool) y := x <= z end skip")
+  end
+
+  test "two function declarations" do
+    assert {:ok,
+            {:program, :program, 1,
+             [
+               functions: [
+                 {:declaration, :fun_decl, 1,
+                  [
+                    function_name: "f",
+                    params: [
+                      [
+                        {:declaration, :param_decl, 1,
+                         [variable: "x", type: {:type, :int, 1, []}]}
+                      ],
+                      [
+                        {:declaration, :param_decl, 1,
+                         [variable: "z", type: {:type, :int, 1, []}]}
+                      ]
+                    ],
+                    returns: [{:declaration, :param_decl, 1, [variable: "y"]}],
+                    body: [
+                      {:stm, :assignment, 1,
+                       [
+                         lhs: "y",
+                         rhs:
+                           {:exp, :mul, 1,
+                            [
+                              lhs: {:exp, :variable, 1, [name: "x"]},
+                              rhs: {:exp, :variable, 1, [name: "z"]}
+                            ]}
+                       ]}
+                    ]
+                  ]},
+                 {:declaration, :fun_decl, 1,
+                  [
+                    function_name: "g",
+                    params: [[{:declaration, :param_decl, 1, [variable: "x"]}]],
+                    returns: [{:declaration, :param_decl, 1, [variable: "z"]}],
+                    body: [
+                      {:stm, :assignment, 1, [lhs: "z", rhs: {:exp, :variable, 1, [name: "x"]}]}
+                    ]
+                  ]}
+               ],
+               main_stm: [
+                 {:stm, :fun_app, 1,
+                  [lhs: "v1", fun_name: "g", args: [{:exp, :literal, 1, [number: 3]}]]},
+                 {:stm, :fun_app, 1,
+                  [
+                    lhs: "v2",
+                    fun_name: "f",
+                    args: [
+                      {:exp, :variable, 1, [name: "v1"]},
+                      {:exp, :literal, 1, [number: 3]}
+                    ]
+                  ]}
+               ]
+             ]}} ==
+             parse(
+               "function f(x :: int, z :: int) ret (y) y := x * z end function g(x) ret (z) z := x end v1 := g(3); v2 := f(v1, 3)"
+             )
+  end
+
   defp unwrap_expr({:ok, {:program, :program, _, opts}}) do
     [{:stm, :assignment, _, opts_assignment} | _] = opts[:main_stm]
     {:ok, Keyword.get(opts_assignment, :rhs)}
