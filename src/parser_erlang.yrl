@@ -6,16 +6,16 @@ Terminals '+' '-' '*' '<=' '==' '?' ':' '(' ')' 'true' 'false' '&&' '||' ':=' ';
 Rootsymbol program.
 
 
-Nonassoc 7 ':='.
-Nonassoc 10 '?'.
-Nonassoc 10 ':'.
-Right 30 '||'.
-Right 40 '&&'.
-Nonassoc 50 '<='.
-Nonassoc 50 '=='.
-Left 100 '+'.
-Left 100 '-'.
-Left 200 '*'.
+Nonassoc 100 ':='.
+Nonassoc 200 '?'.
+Nonassoc 200 ':'.
+Right 300 '||'.
+Right 400 '&&'.
+Nonassoc 500 '<='.
+Nonassoc 500 '=='.
+Left 600 '+'.
+Left 600 '-'.
+Left 700 '*'.
 
 exp -> integer      : { exp, literal, token_line('$1'), [{number, token_value('$1')}] }.
 exp -> 'true'       : { exp, literal, token_line('$1'), [{boolean, true}]}.
