@@ -1,4 +1,5 @@
-Nonterminals exp stm stm_seq var_decl var_decls type fun_decl param_decls non_empty_param_decls param_decl fun_decls program exps non_empty_exps.
+Nonterminals exp stm stm_seq var_decl var_decls type fun_decl param_decls non_empty_param_decls 
+      param_decl fun_decls program exps non_empty_exps non_empty_ids non_empty_types.
 Terminals '+' '-' '*' '<=' '==' '?' ':' '(' ')' 'true' 'false' '&&' '||' ':=' ';' '::' ','
           integer identifier
           skip if then else while do begin end var int bool function ret.
@@ -32,6 +33,7 @@ exp -> exp '||' exp : { exp, 'or', ast_line('$1'), [{lhs, '$1'}, {rhs, '$3'}] }.
 exp -> exp '?' exp ':' exp 
                     : { exp, conditional, ast_line('$1'), [{condition, '$1'}, {'if', '$3'}, {'else', '$5'}] }.
 exp -> '(' exp ')'  : '$2'.
+exp -> '(' exp ',' non_empty_exps ')'  : {exp, tuple, token_line('$1'), [{components, ['$2' | '$4']}]}.
 
 stm -> skip          
   : { stm, skip, token_line('$1'), [] }.
@@ -39,6 +41,8 @@ stm -> identifier ':=' exp
   : { stm, assignment, token_line('$1'), [{lhs, token_value('$1')}, {rhs, '$3'}] }.
 stm -> identifier ':=' identifier '(' exps ')'
   : { stm, fun_app, token_line('$1'), [{lhs, token_value('$1')}, {fun_name, token_value('$3')}, {args, '$5'}] }.
+stm -> '(' identifier ',' non_empty_ids ')' ':=' exp
+  : { stm, tuple_assignment, token_line('$1'), [{lhs, [token_value('$2') | '$4']}, {rhs, '$7'}] }.
 stm -> if exp then stm_seq else stm_seq
   : { stm, 'if', token_line('$1'), [{condition, '$2'}, {'then', '$4'}, {'else', '$6'}] }.
 stm -> while exp do stm_seq
@@ -87,8 +91,16 @@ exps -> '$empty'       : [].
 non_empty_exps -> exp                     : ['$1'].
 non_empty_exps -> exp ',' non_empty_exps  : ['$1' | '$3'].
 
+non_empty_ids -> identifier                    : [token_value('$1')].
+non_empty_ids -> identifier ',' non_empty_ids  : [token_value('$1') | '$3'].
+
 type -> int   : {type, int, token_line('$1'), []}.
 type -> bool  : {type, bool, token_line('$1'), []}.
+type -> '(' type ',' non_empty_types ')' : {type, tuple, token_line('$1'), ['$2' | '$4']}.
+
+
+non_empty_types -> type                      : ['$1'].
+non_empty_types -> type ',' non_empty_types  : ['$1' | '$3'].
 
 Erlang code.
 

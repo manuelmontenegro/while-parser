@@ -480,6 +480,84 @@ defmodule WhileParser.ParserTest do
              )
   end
 
+  test "tuple creation" do
+    assert {:ok,
+            {:program, :program, 1,
+             [
+               functions: [],
+               main_stm: [
+                 {:stm, :assignment, 1,
+                  [
+                    lhs: "z",
+                    rhs:
+                      {:exp, :tuple, 1,
+                       [
+                         components: [
+                           {:exp, :literal, 1, [number: 2]},
+                           {:exp, :add, 1,
+                            [
+                              lhs: {:exp, :literal, 1, [number: 4]},
+                              rhs: {:exp, :literal, 1, [number: 5]}
+                            ]},
+                           {:exp, :literal, 1, [number: 7]}
+                         ]
+                       ]}
+                  ]}
+               ]
+             ]}} == parse("z := (2, 4+5, 7)")
+  end
+
+  test "tuple destruction" do
+    assert {:ok,
+            {:program, :program, 1,
+             [
+               functions: [],
+               main_stm: [
+                 {:stm, :tuple_assignment, 1,
+                  [
+                    lhs: ["x", "z"],
+                    rhs:
+                      {:exp, :tuple, 1,
+                       [
+                         components: [
+                           {:exp, :variable, 1, [name: "z"]},
+                           {:exp, :variable, 1, [name: "x"]}
+                         ]
+                       ]}
+                  ]}
+               ]
+             ]}} == parse("(x, z) := (z, x)")
+  end
+
+  test "tuple types" do
+    assert {:ok,
+            {:program, :program, 1,
+             [
+               functions: [],
+               main_stm: [
+                 {:stm, :block, 1,
+                  [
+                    decls: [
+                      {:declaration, :var_decl, 1,
+                       [
+                         lhs: "z",
+                         rhs:
+                           {:exp, :tuple, 1,
+                            [
+                              components: [
+                                {:exp, :literal, 1, [number: 3]},
+                                {:exp, :literal, 1, [boolean: true]}
+                              ]
+                            ]},
+                         type: {:type, :tuple, 1, [{:type, :int, 1, []}, {:type, :bool, 1, []}]}
+                       ]}
+                    ],
+                    body: [{:stm, :skip, 1, []}]
+                  ]}
+               ]
+             ]}} == parse("begin var z :: (int, bool) := (3, true); skip end")
+  end
+
   defp unwrap_expr({:ok, {:program, :program, _, opts}}) do
     [{:stm, :assignment, _, opts_assignment} | _] = opts[:main_stm]
     {:ok, Keyword.get(opts_assignment, :rhs)}
