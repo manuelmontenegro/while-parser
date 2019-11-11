@@ -202,7 +202,7 @@ defmodule WhileParser.ParserTest do
                     body: [{:stm, :skip, 1, []}]
                   ]}
                ]
-             ]}} == parse("while x == 0 && y <= 10 || 20 <= z do skip")
+             ]}} == parse("while x == 0 && y <= 10 || 20 <= z do skip end")
   end
 
   test "conditional expression" do
@@ -665,7 +665,7 @@ defmodule WhileParser.ParserTest do
                     else: [{:stm, :skip, 1, []}, {:stm, :skip, 1, []}]
                   ]}
                ]
-             ]}} == parse("ifnil x then z := 4 else skip; skip")
+             ]}} == parse("ifnil x then z := 4 else skip; skip end")
   end
 
   test "list type" do
@@ -716,6 +716,33 @@ defmodule WhileParser.ParserTest do
                   ]}
                ]
              ]}} == parse("begin var x :: [bool]+ := nil; skip end")
+  end
+
+  test "if-then-else without ambiguity" do
+    assert {:ok,
+            {:program, :program, 1,
+             [
+               functions: [],
+               main_stm: [
+                 {:stm, :if, 1,
+                  [
+                    condition:
+                      {:exp, :leq, 1,
+                       [
+                         lhs: {:exp, :variable, 1, [name: "x"]},
+                         rhs: {:exp, :literal, 1, [number: 0]}
+                       ]},
+                    then: [
+                      {:stm, :assignment, 1, [lhs: "x", rhs: {:exp, :literal, 1, [number: 2]}]},
+                      {:stm, :assignment, 1, [lhs: "y", rhs: {:exp, :literal, 1, [number: 3]}]}
+                    ],
+                    else: [
+                      {:stm, :assignment, 1, [lhs: "y", rhs: {:exp, :literal, 1, [number: 0]}]}
+                    ]
+                  ]},
+                 {:stm, :assignment, 1, [lhs: "z", rhs: {:exp, :variable, 1, [name: "y"]}]}
+               ]
+             ]}} == parse("if x <= 0 then x := 2; y := 3; else y := 0 end; z := y;")
   end
 
   defp unwrap_expr({:ok, {:program, :program, _, opts}}) do

@@ -6,7 +6,6 @@ Terminals '+' '-' '*' '<=' '==' '?' ':' '(' ')' 'true' 'false' '&&' '||' ':=' ';
 Rootsymbol program.
 
 
-Right 5 ';'.
 Nonassoc 7 ':='.
 Nonassoc 10 '?'.
 Nonassoc 10 ':'.
@@ -48,13 +47,13 @@ stm -> identifier ':=' identifier '(' exps ')'
   : { stm, fun_app, token_line('$1'), [{lhs, token_value('$1')}, {fun_name, token_value('$3')}, {args, '$5'}] }.
 stm -> '(' identifier ',' non_empty_ids ')' ':=' exp
   : { stm, tuple_assignment, token_line('$1'), [{lhs, [token_value('$2') | '$4']}, {rhs, '$7'}] }.
-stm -> if exp then stm_seq else stm_seq
+stm -> if exp then stm_seq else stm_seq end
   : { stm, 'if', token_line('$1'), [{condition, '$2'}, {'then', '$4'}, {'else', '$6'}] }.
-stm -> while exp do stm_seq
+stm -> while exp do stm_seq end
   : { stm, while, token_line('$1'), [{condition, '$2'}, {'body', '$4'}] }.
 stm -> begin var_decls stm_seq end
   : { stm, block, token_line('$1'), [{decls, '$2'}, {body, '$3'}]}.
-stm -> ifnil identifier then stm_seq else stm_seq
+stm -> ifnil identifier then stm_seq else stm_seq end
   : { stm, ifnil, token_line('$1'), [{variable, token_value('$2')}, {'then', '$4'}, {'else', '$6'}]}.
 
 
