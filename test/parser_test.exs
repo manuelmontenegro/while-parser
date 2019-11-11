@@ -285,7 +285,7 @@ defmodule WhileParser.ParserTest do
              ]}} == parse("z := 5; begin x := 3; end")
   end
 
-  test "function call" do
+  test "function application" do
     assert {:ok,
             {:program, :program, 1,
              [
@@ -311,7 +311,7 @@ defmodule WhileParser.ParserTest do
   test "function application without arguments" do
     assert {:ok,
             {:program, :program, 1,
-             [functions: [], main_stm: [{:stm, :fun_app, 1, [lhs: "z", fun_name: "f"]}]]}} ==
+             [functions: [], main_stm: [{:stm, :fun_app, 1, [lhs: "z", fun_name: "f", args: []]}]]}} ==
              parse("z := f()")
   end
 

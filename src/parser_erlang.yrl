@@ -1,4 +1,4 @@
-Nonterminals exp stm stm_seq var_decl var_decls type fun_decl param_decls param_decl fun_decls program exps.
+Nonterminals exp stm stm_seq var_decl var_decls type fun_decl param_decls non_empty_param_decls param_decl fun_decls program exps non_empty_exps.
 Terminals '+' '-' '*' '<=' '==' '?' ':' '(' ')' 'true' 'false' '&&' '||' ':=' ';' '::' ','
           integer identifier
           skip if then else while do begin end var int bool function ret.
@@ -37,8 +37,6 @@ stm -> skip
   : { stm, skip, token_line('$1'), [] }.
 stm -> identifier ':=' exp
   : { stm, assignment, token_line('$1'), [{lhs, token_value('$1')}, {rhs, '$3'}] }.
-stm -> identifier ':=' identifier '(' ')'
-  : { stm, fun_app, token_line('$1'), [{lhs, token_value('$1')}, {fun_name, token_value('$3')}] }.
 stm -> identifier ':=' identifier '(' exps ')'
   : { stm, fun_app, token_line('$1'), [{lhs, token_value('$1')}, {fun_name, token_value('$3')}, {args, '$5'}] }.
 stm -> if exp then stm_seq else stm_seq
@@ -71,16 +69,23 @@ var_decl -> var identifier '::' type ':=' exp ';'
   : {declaration, var_decl, token_line('$1'), [{lhs, token_value('$2')}, {rhs, '$6'}, {type, '$4'}]}.
 
 
+param_decls -> non_empty_param_decls       : '$1'.
 param_decls -> '$empty'                    : [].
-param_decls -> param_decl ';' param_decls  : ['$1' | '$3'].
+
+non_empty_param_decls -> param_decl                           : [ '$1' ].
+non_empty_param_decls -> param_decl ',' non_empty_param_decls : [ '$1' | '$3' ].
+
 
 param_decl -> identifier 
   : [{declaration, param_decl, token_line('$1'), [{variable, token_value('$1')}]}].
 param_decl -> identifier '::' type 
   : [{declaration, param_decl, token_line('$1'), [{variable, token_value('$1')}, {type, '$3'}]}].
 
-exps -> exp           : ['$1'].
-exps -> exp ',' exps  : ['$1' | '$3'].
+exps -> non_empty_exps : '$1'.
+exps -> '$empty'       : [].
+
+non_empty_exps -> exp                     : ['$1'].
+non_empty_exps -> exp ',' non_empty_exps  : ['$1' | '$3'].
 
 type -> int   : {type, int, token_line('$1'), []}.
 type -> bool  : {type, bool, token_line('$1'), []}.
