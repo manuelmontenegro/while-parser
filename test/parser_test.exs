@@ -549,13 +549,173 @@ defmodule WhileParser.ParserTest do
                                 {:exp, :literal, 1, [boolean: true]}
                               ]
                             ]},
-                         type: {:type, :tuple, 1, [{:type, :int, 1, []}, {:type, :bool, 1, []}]}
+                         type:
+                           {:type, :tuple, 1,
+                            [components: [{:type, :int, 1, []}, {:type, :bool, 1, []}]]}
                        ]}
                     ],
                     body: [{:stm, :skip, 1, []}]
                   ]}
                ]
              ]}} == parse("begin var z :: (int, bool) := (3, true); skip end")
+  end
+
+  test "empty list" do
+    assert {:ok,
+            {:program, :program, 1,
+             [
+               functions: [],
+               main_stm: [{:stm, :assignment, 1, [lhs: "x", rhs: {:exp, nil, 1, []}]}]
+             ]}} == parse("x := nil")
+  end
+
+  test "singleton list" do
+    assert {:ok,
+            {:program, :program, 1,
+             [
+               functions: [],
+               main_stm: [
+                 {:stm, :assignment, 1,
+                  [
+                    lhs: "x",
+                    rhs:
+                      {:exp, :cons, 1,
+                       [head: {:exp, :literal, 1, [boolean: true]}, tail: {:exp, nil, 1, []}]}
+                  ]}
+               ]
+             ]}} == parse("x := [true | nil]")
+  end
+
+  test "list of two elements" do
+    assert {:ok,
+            {:program, :program, 1,
+             [
+               functions: [],
+               main_stm: [
+                 {:stm, :assignment, 1,
+                  [
+                    lhs: "x",
+                    rhs:
+                      {:exp, :cons, 1,
+                       [
+                         head: {:exp, :literal, 1, [number: 3]},
+                         tail:
+                           {:exp, :cons, 1,
+                            [head: {:exp, :literal, 1, [number: 4]}, tail: {:exp, nil, 1, []}]}
+                       ]}
+                  ]}
+               ]
+             ]}} == parse("x := [3 | [4 | nil]]")
+  end
+
+  test "head of singleton list" do
+    assert {:ok,
+            {:program, :program, 1,
+             [
+               functions: [],
+               main_stm: [
+                 {:stm, :assignment, 1,
+                  [
+                    lhs: "x",
+                    rhs:
+                      {:exp, :hd, 1,
+                       [
+                         lhs:
+                           {:exp, :cons, 1,
+                            [head: {:exp, :literal, 1, [number: 3]}, tail: {:exp, nil, 1, []}]}
+                       ]}
+                  ]}
+               ]
+             ]}} == parse("x := [3 | nil].hd")
+  end
+
+  test "tail of singleton list" do
+    assert {:ok,
+            {:program, :program, 1,
+             [
+               functions: [],
+               main_stm: [
+                 {:stm, :assignment, 1,
+                  [
+                    lhs: "x",
+                    rhs:
+                      {:exp, :tl, 1,
+                       [
+                         lhs:
+                           {:exp, :cons, 1,
+                            [head: {:exp, :literal, 1, [boolean: true]}, tail: {:exp, nil, 1, []}]}
+                       ]}
+                  ]}
+               ]
+             ]}} == parse("x := [true | nil].tl")
+  end
+
+  test "ifnil statement" do
+    assert {:ok,
+            {:program, :program, 1,
+             [
+               functions: [],
+               main_stm: [
+                 {:stm, :ifnil, 1,
+                  [
+                    variable: "x",
+                    then: [
+                      {:stm, :assignment, 1, [lhs: "z", rhs: {:exp, :literal, 1, [number: 4]}]}
+                    ],
+                    else: [{:stm, :skip, 1, []}, {:stm, :skip, 1, []}]
+                  ]}
+               ]
+             ]}} == parse("ifnil x then z := 4 else skip; skip")
+  end
+
+  test "list type" do
+    assert {:ok,
+            {:program, :program, 1,
+             [
+               functions: [],
+               main_stm: [
+                 {:stm, :block, 1,
+                  [
+                    decls: [
+                      {:declaration, :var_decl, 1,
+                       [
+                         lhs: "x",
+                         rhs: {:exp, nil, 1, []},
+                         type:
+                           {:type, :list, 1,
+                            [
+                              elements:
+                                {:type, :tuple, 1,
+                                 [components: [{:type, :int, 1, []}, {:type, :bool, 1, []}]]}
+                            ]}
+                       ]}
+                    ],
+                    body: [{:stm, :skip, 1, []}]
+                  ]}
+               ]
+             ]}} == parse("begin var x :: [(int, bool)] := nil; skip end")
+  end
+
+  test "nonempty lists" do
+    assert {:ok,
+            {:program, :program, 1,
+             [
+               functions: [],
+               main_stm: [
+                 {:stm, :block, 1,
+                  [
+                    decls: [
+                      {:declaration, :var_decl, 1,
+                       [
+                         lhs: "x",
+                         rhs: {:exp, nil, 1, []},
+                         type: {:type, :non_empty_list, 1, [elements: {:type, :bool, 1, []}]}
+                       ]}
+                    ],
+                    body: [{:stm, :skip, 1, []}]
+                  ]}
+               ]
+             ]}} == parse("begin var x :: [bool]+ := nil; skip end")
   end
 
   defp unwrap_expr({:ok, {:program, :program, _, opts}}) do

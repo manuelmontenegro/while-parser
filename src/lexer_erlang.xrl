@@ -12,6 +12,9 @@ Rules.
 {Whitespace}  : skip_token.
 \(            : {token, {'(', TokenLine}}.
 \)            : {token, {')', TokenLine}}.
+\[            : {token, {'[', TokenLine}}.
+\]            : {token, {']', TokenLine}}.
+\|            : {token, {'|', TokenLine}}.
 ::            : {token, {'::', TokenLine}}.
 \+            : {token, {'+', TokenLine}}.
 \-            : {token, {'-', TokenLine}}.
@@ -23,6 +26,7 @@ Rules.
 ==            : {token, {'==', TokenLine}}.
 \;            : {token, {';', TokenLine}}.
 \,            : {token, {',', TokenLine}}.
+\.            : {token, {'.', TokenLine}}.
 \&\&          : {token, {'&&', TokenLine}}.
 \|\|          : {token, {'||', TokenLine}}.
 skip          : {token, {skip, TokenLine}}.
@@ -33,6 +37,7 @@ true          : {token, {'true', TokenLine}}.
 false         : {token, {'false', TokenLine}}.
 in            : {token, {in, TokenLine}}.
 if            : {token, {'if', TokenLine}}.
+ifnil         : {token, {'ifnil', TokenLine}}.
 then          : {token, {'then', TokenLine}}.
 else          : {token, {'else', TokenLine}}.
 while         : {token, {'while', TokenLine}}.
@@ -41,6 +46,9 @@ begin         : {token, {'begin', TokenLine}}.
 var           : {token, {'var', TokenLine}}.
 int           : {token, {'int', TokenLine}}.
 bool          : {token, {'bool', TokenLine}}.
+hd            : {token, {'hd', TokenLine}}.
+tl            : {token, {'tl', TokenLine}}.
+nil           : {token, {'nil', TokenLine}}.
 {Identifier}  : {token, {identifier, TokenLine, list_to_binary(TokenChars)}}.
 {Integer}{LetterOrUnderscore} 
               : {error, ["Invalid token \"", TokenChars, "\""]}.

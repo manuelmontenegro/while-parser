@@ -1,8 +1,8 @@
 Nonterminals exp stm stm_seq var_decl var_decls type fun_decl param_decls non_empty_param_decls 
       param_decl fun_decls program exps non_empty_exps non_empty_ids non_empty_types.
-Terminals '+' '-' '*' '<=' '==' '?' ':' '(' ')' 'true' 'false' '&&' '||' ':=' ';' '::' ','
+Terminals '+' '-' '*' '<=' '==' '?' ':' '(' ')' 'true' 'false' '&&' '||' ':=' ';' '::' ',' '.' '[' ']' '|'
           integer identifier
-          skip if then else while do begin end var int bool function ret.
+          skip if then else while do begin end var int bool function ret nil hd tl ifnil.
 Rootsymbol program.
 
 
@@ -34,6 +34,11 @@ exp -> exp '?' exp ':' exp
                     : { exp, conditional, ast_line('$1'), [{condition, '$1'}, {'if', '$3'}, {'else', '$5'}] }.
 exp -> '(' exp ')'  : '$2'.
 exp -> '(' exp ',' non_empty_exps ')'  : {exp, tuple, token_line('$1'), [{components, ['$2' | '$4']}]}.
+exp -> nil          : { exp, 'nil', token_line('$1'), []}.
+exp -> exp '.' hd   : { exp, hd, ast_line('$1'), [{lhs, '$1'}]}.
+exp -> exp '.' tl   : { exp, tl, ast_line('$1'), [{lhs, '$1'}]}.
+exp -> '[' exp '|' exp ']'
+                    : { exp, cons, token_line('$1'), [{head, '$2'}, {tail, '$4'}]}.
 
 stm -> skip          
   : { stm, skip, token_line('$1'), [] }.
@@ -49,6 +54,8 @@ stm -> while exp do stm_seq
   : { stm, while, token_line('$1'), [{condition, '$2'}, {'body', '$4'}] }.
 stm -> begin var_decls stm_seq end
   : { stm, block, token_line('$1'), [{decls, '$2'}, {body, '$3'}]}.
+stm -> ifnil identifier then stm_seq else stm_seq
+  : { stm, ifnil, token_line('$1'), [{variable, token_value('$2')}, {'then', '$4'}, {'else', '$6'}]}.
 
 
 program -> fun_decls stm_seq
@@ -96,8 +103,9 @@ non_empty_ids -> identifier ',' non_empty_ids  : [token_value('$1') | '$3'].
 
 type -> int   : {type, int, token_line('$1'), []}.
 type -> bool  : {type, bool, token_line('$1'), []}.
-type -> '(' type ',' non_empty_types ')' : {type, tuple, token_line('$1'), ['$2' | '$4']}.
-
+type -> '(' type ',' non_empty_types ')' : {type, tuple, token_line('$1'), [{components, ['$2' | '$4']}]}.
+type -> '[' type ']'                     : {type, list, token_line('$1'), [{elements, '$2'}]}.
+type -> '[' type ']' '+'                 : {type, non_empty_list, token_line('$1'), [{elements, '$2'}]}.
 
 non_empty_types -> type                      : ['$1'].
 non_empty_types -> type ',' non_empty_types  : ['$1' | '$3'].
