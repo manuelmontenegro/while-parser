@@ -1537,7 +1537,7 @@ yeccpars2_51_then(__Stack0) ->
 'yeccpars2_52_\'$end\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
-   { exp , lt , ast_line ( __1 ) , [ { lhs , __1 } , { rhs , __3 } ] }
+   { exp , leq , ast_line ( __1 ) , [ { lhs , __1 } , { rhs , __3 } ] }
   end | __Stack].
 
 -compile({inline,'yeccpars2_52_\'&&\''/1}).
@@ -1545,7 +1545,7 @@ yeccpars2_51_then(__Stack0) ->
 'yeccpars2_52_\'&&\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
-   { exp , lt , ast_line ( __1 ) , [ { lhs , __1 } , { rhs , __3 } ] }
+   { exp , leq , ast_line ( __1 ) , [ { lhs , __1 } , { rhs , __3 } ] }
   end | __Stack].
 
 -compile({inline,'yeccpars2_52_\')\''/1}).
@@ -1553,7 +1553,7 @@ yeccpars2_51_then(__Stack0) ->
 'yeccpars2_52_\')\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
-   { exp , lt , ast_line ( __1 ) , [ { lhs , __1 } , { rhs , __3 } ] }
+   { exp , leq , ast_line ( __1 ) , [ { lhs , __1 } , { rhs , __3 } ] }
   end | __Stack].
 
 -compile({inline,'yeccpars2_52_\',\''/1}).
@@ -1561,7 +1561,7 @@ yeccpars2_51_then(__Stack0) ->
 'yeccpars2_52_\',\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
-   { exp , lt , ast_line ( __1 ) , [ { lhs , __1 } , { rhs , __3 } ] }
+   { exp , leq , ast_line ( __1 ) , [ { lhs , __1 } , { rhs , __3 } ] }
   end | __Stack].
 
 -compile({inline,'yeccpars2_52_\':\''/1}).
@@ -1569,7 +1569,7 @@ yeccpars2_51_then(__Stack0) ->
 'yeccpars2_52_\':\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
-   { exp , lt , ast_line ( __1 ) , [ { lhs , __1 } , { rhs , __3 } ] }
+   { exp , leq , ast_line ( __1 ) , [ { lhs , __1 } , { rhs , __3 } ] }
   end | __Stack].
 
 -compile({inline,'yeccpars2_52_\';\''/1}).
@@ -1577,7 +1577,7 @@ yeccpars2_51_then(__Stack0) ->
 'yeccpars2_52_\';\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
-   { exp , lt , ast_line ( __1 ) , [ { lhs , __1 } , { rhs , __3 } ] }
+   { exp , leq , ast_line ( __1 ) , [ { lhs , __1 } , { rhs , __3 } ] }
   end | __Stack].
 
 -compile({inline,'yeccpars2_52_\'?\''/1}).
@@ -1585,7 +1585,7 @@ yeccpars2_51_then(__Stack0) ->
 'yeccpars2_52_\'?\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
-   { exp , lt , ast_line ( __1 ) , [ { lhs , __1 } , { rhs , __3 } ] }
+   { exp , leq , ast_line ( __1 ) , [ { lhs , __1 } , { rhs , __3 } ] }
   end | __Stack].
 
 -compile({inline,yeccpars2_52_do/1}).
@@ -1593,7 +1593,7 @@ yeccpars2_51_then(__Stack0) ->
 yeccpars2_52_do(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
-   { exp , lt , ast_line ( __1 ) , [ { lhs , __1 } , { rhs , __3 } ] }
+   { exp , leq , ast_line ( __1 ) , [ { lhs , __1 } , { rhs , __3 } ] }
   end | __Stack].
 
 -compile({inline,yeccpars2_52_else/1}).
@@ -1601,7 +1601,7 @@ yeccpars2_52_do(__Stack0) ->
 yeccpars2_52_else(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
-   { exp , lt , ast_line ( __1 ) , [ { lhs , __1 } , { rhs , __3 } ] }
+   { exp , leq , ast_line ( __1 ) , [ { lhs , __1 } , { rhs , __3 } ] }
   end | __Stack].
 
 -compile({inline,'yeccpars2_52_\'end\''/1}).
@@ -1609,7 +1609,7 @@ yeccpars2_52_else(__Stack0) ->
 'yeccpars2_52_\'end\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
-   { exp , lt , ast_line ( __1 ) , [ { lhs , __1 } , { rhs , __3 } ] }
+   { exp , leq , ast_line ( __1 ) , [ { lhs , __1 } , { rhs , __3 } ] }
   end | __Stack].
 
 -compile({inline,yeccpars2_52_then/1}).
@@ -1617,7 +1617,7 @@ yeccpars2_52_else(__Stack0) ->
 yeccpars2_52_then(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
-   { exp , lt , ast_line ( __1 ) , [ { lhs , __1 } , { rhs , __3 } ] }
+   { exp , leq , ast_line ( __1 ) , [ { lhs , __1 } , { rhs , __3 } ] }
   end | __Stack].
 
 -compile({inline,'yeccpars2_52_\'||\''/1}).
@@ -1625,7 +1625,7 @@ yeccpars2_52_then(__Stack0) ->
 'yeccpars2_52_\'||\''(__Stack0) ->
  [__3,__2,__1 | __Stack] = __Stack0,
  [begin
-   { exp , lt , ast_line ( __1 ) , [ { lhs , __1 } , { rhs , __3 } ] }
+   { exp , leq , ast_line ( __1 ) , [ { lhs , __1 } , { rhs , __3 } ] }
   end | __Stack].
 
 -compile({inline,yeccpars2_53_/1}).

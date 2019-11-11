@@ -186,14 +186,14 @@ defmodule WhileParser.ParserTest do
                                    rhs: {:exp, :literal, 1, [number: 0]}
                                  ]},
                               rhs:
-                                {:exp, :lt, 1,
+                                {:exp, :leq, 1,
                                  [
                                    lhs: {:exp, :variable, 1, [name: "y"]},
                                    rhs: {:exp, :literal, 1, [number: 10]}
                                  ]}
                             ]},
                          rhs:
-                           {:exp, :lt, 1,
+                           {:exp, :leq, 1,
                             [
                               lhs: {:exp, :literal, 1, [number: 20]},
                               rhs: {:exp, :variable, 1, [name: "z"]}
@@ -406,7 +406,7 @@ defmodule WhileParser.ParserTest do
                        [
                          lhs: "y",
                          rhs:
-                           {:exp, :lt, 1,
+                           {:exp, :leq, 1,
                             [
                               lhs: {:exp, :variable, 1, [name: "x"]},
                               rhs: {:exp, :variable, 1, [name: "z"]}

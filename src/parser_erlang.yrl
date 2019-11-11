@@ -19,13 +19,13 @@ Left 200 '*'.
 
 exp -> integer      : { exp, literal, token_line('$1'), [{number, token_value('$1')}] }.
 exp -> 'true'       : { exp, literal, token_line('$1'), [{boolean, true}]}.
-exp -> 'false'       : { exp, literal, token_line('$1'), [{boolean, false}]}.
+exp -> 'false'      : { exp, literal, token_line('$1'), [{boolean, false}]}.
 exp -> identifier   : { exp, variable, token_line('$1'), [{name, token_value('$1')}] }.
 exp -> '-' integer  : { exp, literal, token_line('$1'), [{number, -token_value('$2')}]}.
 exp -> exp '+' exp  : { exp, add, ast_line('$1'), [{lhs, '$1'}, {rhs, '$3'}] }.
 exp -> exp '-' exp  : { exp, sub, ast_line('$1'), [{lhs, '$1'}, {rhs, '$3'}] }.
 exp -> exp '*' exp  : { exp, mul, ast_line('$1'), [{lhs, '$1'}, {rhs, '$3'}] }.
-exp -> exp '<=' exp : { exp, lt, ast_line('$1'), [{lhs, '$1'}, {rhs, '$3'}] }.
+exp -> exp '<=' exp : { exp, leq, ast_line('$1'), [{lhs, '$1'}, {rhs, '$3'}] }.
 exp -> exp '==' exp : { exp, eq, ast_line('$1'), [{lhs, '$1'}, {rhs, '$3'}] }.
 exp -> exp '&&' exp : { exp, 'and', ast_line('$1'), [{lhs, '$1'}, {rhs, '$3'}] }.
 exp -> exp '||' exp : { exp, 'or', ast_line('$1'), [{lhs, '$1'}, {rhs, '$3'}] }.
