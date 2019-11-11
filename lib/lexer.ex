@@ -16,6 +16,12 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 defmodule WhileParser.Lexer do
+  @moduledoc """
+  An Elixir wrapper to the automatically generated `lexer_erlang` module. For internal use only.
+
+  Use `WhileParser` module instead.
+  """
+
   @type line_number :: integer
   @type error_msg :: String.t()
 

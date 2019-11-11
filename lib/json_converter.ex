@@ -16,6 +16,11 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 defmodule WhileParser.JSONConverter do
+  @moduledoc """
+  Functions for converting an AST representation into JSON. For internal use only.
+
+  Use `WhileParser` module instead.
+  """
 
   @valid_categories [:exp, :stm, :program, :declaration, :type]
 

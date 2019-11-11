@@ -16,6 +16,13 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 defmodule WhileParser.Parser do
+  @moduledoc """
+  An Elixir wrapper to the automatically generated `parser_erlang` module. For internal use only.
+
+  Use `WhileParser` module instead.
+  """
+
+
   def parse(string) do
     with {:ok, tokens} <- WhileParser.Lexer.lexer(string) do
       :parser_erlang.parse(tokens)
