@@ -25,6 +25,8 @@ defmodule WhileParser.Parser do
   def parse(string) do
     with {:ok, tokens} <- WhileParser.Lexer.lexer(string) do
       :parser_erlang.parse(tokens)
+    else
+      {:error, line_no, msg} -> {:error, {line_no, :parser, [msg]}}
     end
   end
 end
