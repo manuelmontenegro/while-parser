@@ -43,18 +43,21 @@ defmodule LexerTest do
   end
 
   test "symbols: parentheses" do
-    assert {:ok, [{:'(', _ }, {:')', _ }]} = lexer("( )")
-    assert {:ok, [{:'(', _ }, {:')', _ }]} = lexer("()")
-    assert {:ok, [{:')', _ }, {:'(', _ }]} = lexer(" )(")
+    assert {:ok, [{:"(", _}, {:")", _}]} = lexer("( )")
+    assert {:ok, [{:"(", _}, {:")", _}]} = lexer("()")
+    assert {:ok, [{:")", _}, {:"(", _}]} = lexer(" )(")
   end
 
   test "some arithmetic expressions" do
-    assert {:ok, [{:identifier, _, "x" }, {:'+', _ }, {:integer, _, 1}]} = lexer("x + 1")
-    assert {:ok, [{:integer, _, 3 }, {:'-', _ }, {:integer, _, 5}]} = lexer("3 -5")
-    assert {:ok, [{:integer, _, 3 }, {:'-', _ }, {:integer, _, 5}]} = lexer("3- 5")
-    assert {:ok, [{:identifier, _, "x"}, {:'<=', _}, {:integer, _, 1}]} = lexer("x<=1")
-    assert {:ok, [{:identifier, _, "x"}, {:'<=', _}, {:identifier, _, "y"}]} = lexer("x <=y")
-    assert {:ok, [{:identifier, _, "x"}, {:':=', _}, {:identifier, _, "x"}, {:'+', _}, {:integer, _, 10}]} = lexer("x := x + 10")
+    assert {:ok, [{:identifier, _, "x"}, {:+, _}, {:integer, _, 1}]} = lexer("x + 1")
+    assert {:ok, [{:integer, _, 3}, {:-, _}, {:integer, _, 5}]} = lexer("3 -5")
+    assert {:ok, [{:integer, _, 3}, {:-, _}, {:integer, _, 5}]} = lexer("3- 5")
+    assert {:ok, [{:identifier, _, "x"}, {:<=, _}, {:integer, _, 1}]} = lexer("x<=1")
+    assert {:ok, [{:identifier, _, "x"}, {:<=, _}, {:identifier, _, "y"}]} = lexer("x <=y")
+
+    assert {:ok,
+            [{:identifier, _, "x"}, {:":=", _}, {:identifier, _, "x"}, {:+, _}, {:integer, _, 10}]} =
+             lexer("x := x + 10")
   end
 
   test "separate keywords" do

@@ -45,6 +45,6 @@ defmodule WhileParser.Lexer do
   defp prepare_result({:ok, tokens, _}), do: {:ok, tokens}
 
   defp prepare_result({:error, {line_number, @lexer_erlang_module, error}, _}) do
-    {:error, line_number, @lexer_erlang_module.format_error(error) |> Enum.join() }
+    {:error, line_number, @lexer_erlang_module.format_error(error) |> Enum.join()}
   end
 end

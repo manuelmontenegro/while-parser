@@ -38,10 +38,27 @@ defmodule WhileParser do
 
   It returns either the resulting JSON-encoded string or a `parse_error()`
   """
-  @spec parse_to_json(String.t() | [char()], [Jason.encode_opt()]) :: {:ok, String.t()} | {:error, parse_error()}
+  @spec parse_to_json(String.t() | [char()], [Jason.encode_opt()]) ::
+          {:ok, String.t()} | {:error, parse_error()}
   def parse_to_json(string, options \\ []) do
     with {:ok, ast} <- Parser.parse(string) do
       {:ok, JSONConverter.to_json!(ast, options)}
+    else
+      {:error, {line_no, _, msg}} -> {:error, {line_no, Enum.join(msg) |> fix_eof_error()}}
+    end
+  end
+
+  @doc """
+  Returns the the Abstract Syntax Tree of the program given as parameter as an Erlang map.
+
+  It receives a `string` with the source code of the program to parse.
+
+  It returns either an AST or a `parse_error()`
+  """
+  @spec parse_to_json(String.t() | [char()]) :: {:ok, any()} | {:error, parse_error()}
+  def parse_to_ast(string) do
+    with {:ok, ast} <- Parser.parse(string) do
+      {:ok, ast}
     else
       {:error, {line_no, _, msg}} -> {:error, {line_no, Enum.join(msg) |> fix_eof_error()}}
     end

@@ -22,7 +22,6 @@ defmodule WhileParser.Parser do
   Use `WhileParser` module instead.
   """
 
-
   def parse(string) do
     with {:ok, tokens} <- WhileParser.Lexer.lexer(string) do
       :parser_erlang.parse(tokens)
