@@ -55,10 +55,10 @@ defmodule WhileParser do
 
   It returns either an AST or a `parse_error()`
   """
-  @spec parse_to_json(String.t() | [char()]) :: {:ok, any()} | {:error, parse_error()}
+  @spec parse_to_ast(String.t() | [char()]) :: {:ok, any()} | {:error, parse_error()}
   def parse_to_ast(string) do
     with {:ok, ast} <- Parser.parse(string) do
-      {:ok, ast}
+      {:ok, ast |> JSONConverter.to_map()}
     else
       {:error, {line_no, _, msg}} -> {:error, {line_no, Enum.join(msg) |> fix_eof_error()}}
     end
