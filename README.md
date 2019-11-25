@@ -2,6 +2,8 @@
 
 This is an auxiliary library used for other projects related to the course on _Static Analysis of Programs and Constraint Solving_.
 
+Notice that this is only a parser. It checks whether a given string matches the syntax definition of _While_. It does _not_ check any other kind of contextual constraint, such as well-typedness, duplicate definitions, definition-before-use, etc.
+
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
