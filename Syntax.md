@@ -1,6 +1,6 @@
 # Syntax of _While_
 
-This describes explains the textual representation of the programs written in _While_ language, by means of examples. The BNF grammar can be found in the [parser_erlang.yrl](src/parser_erlang.yrl) file
+This describes explains the textual representation of the programs written in _While_ language, by means of examples.
 
 ### Statements
 
