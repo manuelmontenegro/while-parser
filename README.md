@@ -6,6 +6,8 @@ Notice that this is only a parser. It checks whether a given string matches the 
 
 The complete definition of the syntax can be found in [Syntax.md](Syntax.md). The corresponding BNF grammar is defined in the [parser_erlang.yrl](src/parser_erlang.yrl) file.
 
+This module can also generate control-flow graphs for a given while program. Note that only basic constructs are allowed (`skip`, assignments, conditional statements and `while` loops).
+
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
