@@ -24,6 +24,13 @@ defmodule WhileParser.JSONConverter do
 
   alias WhileParser.CFG.CFGBlock
 
+  defimpl Jason.Encoder, for: CFGBlock do
+    def encode(%CFGBlock{label: l, type: t, contents: cts, succs: s}, opts) do
+      cts = cts |> Enum.map(fn {k, v} -> {k, WhileParser.JSONConverter.to_map(v)} end) |> Enum.into(%{})
+      Jason.Encode.map(%{label: l, type: t, contents: cts, succs: s}, opts)
+    end
+  end
+
   @valid_categories [:exp, :stm, :program, :declaration, :type]
 
   def to_map(x) when is_integer(x), do: x
