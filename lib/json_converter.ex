@@ -1,4 +1,4 @@
-# Copyright 2019 Manuel Montenegro
+# Copyright 2021 Manuel Montenegro
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this software
 # and associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -22,6 +22,8 @@ defmodule WhileParser.JSONConverter do
   Use `WhileParser` module instead.
   """
 
+  alias WhileParser.CFG.CFGBlock
+
   @valid_categories [:exp, :stm, :program, :declaration, :type]
 
   def to_map(x) when is_integer(x), do: x
@@ -36,6 +38,15 @@ defmodule WhileParser.JSONConverter do
       category_sub: to_string(type),
       line: line,
       options: opts |> Enum.map(fn {k, v} -> {k, to_map(v)} end) |> Enum.into(%{})
+    }
+  end
+
+  def to_map(%CFGBlock{label: label, type: type, contents: contents, succs: succs}) do
+    %{
+      label: label,
+      type: to_string(type),
+      contents: contents |> Enum.map(fn {k, v} -> {k, to_map(v)} end) |> Enum.into(%{}),
+      succs: succs |> Enum.map(fn :end -> "end"; x -> x end)
     }
   end
 

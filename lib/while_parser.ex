@@ -1,4 +1,4 @@
-# Copyright 2019 Manuel Montenegro
+# Copyright 2021 Manuel Montenegro
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this software
 # and associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -26,7 +26,7 @@ defmodule WhileParser do
   """
   @type parse_error() :: {non_neg_integer(), String.t()}
 
-  alias WhileParser.{Parser, JSONConverter}
+  alias WhileParser.{Parser, JSONConverter, CFG, CFG.CFGBlock}
 
   @doc """
   Returns the JSON representation of the Abstract Syntax Tree of the program given
@@ -49,7 +49,7 @@ defmodule WhileParser do
   end
 
   @doc """
-  Returns the the Abstract Syntax Tree of the program given as parameter as an Erlang map.
+  Returns the Abstract Syntax Tree of the program given as parameter as an Erlang map.
 
   It receives a `string` with the source code of the program to parse.
 
@@ -61,6 +61,47 @@ defmodule WhileParser do
       {:ok, ast |> JSONConverter.to_map()}
     else
       {:error, {line_no, _, msg}} -> {:error, {line_no, Enum.join(msg) |> fix_eof_error()}}
+    end
+  end
+
+  @doc """
+  Returns the Control Flow Graph of the program given as parameter.
+
+  It receives a `string` with the source code of the program to parse.
+
+  Only the main program is taken into account. Function definitions are ignored.
+
+  It returns either an AST or a `parse_error()` or an `:unsupported` error in case the given program contains
+  unsupported statements (`ifnil`, tuple matching, etc.)
+  """
+  @spec parse_to_cfg(String.t() | [char()]) ::
+          {:ok, CFG.t(), CFGBlock.label()} | {:error, parse_error()} | {:error, {:unsupported, term()}}
+  def parse_to_cfg(string) do
+    with {:ok, {:program, :program, _, kw}} <- Parser.parse(string) do
+      CFG.to_cfg(kw[:main_stm])
+    else
+      {:error, {line_no, _, msg}} -> {:error, {line_no, Enum.join(msg) |> fix_eof_error()}}
+    end
+  end
+
+  @doc """
+  The same as `parse_to_cfg/1` but returns a JSON representation instead.
+
+  It receives a `string` with the source code of the program to parse, and a list of
+  `options` which are subsequently passed to [Jason](https://hex.pm/packages/jason), the underlying JSON decoder.
+  Use `pretty: true` to obtain pretty-printed JSON output.
+
+  Only the main program is taken into account. Function definitions are ignored.
+
+
+  It returns either a JSON-encoded string or a `parse_error()` or an `:unsupported` error in case the given program contains
+  unsupported statements (`ifnil`, tuple matching, etc.)
+  """
+  @spec parse_to_cfg_json(String.t() | [char()],  [Jason.encode_opt()]) ::
+          {:ok, CFG.t(), CFGBlock.label()} | {:error, parse_error()} | {:error, {:unsupported, term()}}
+  def parse_to_cfg_json(string, options \\ []) do
+    with {:ok, cfg, init} <- parse_to_cfg(string) do
+      {:ok, JSONConverter.to_json!(cfg, options), init}
     end
   end
 
