@@ -24,7 +24,7 @@ defmodule WhileParser.CFGTest do
     assert {:ok,
             [
               %WhileParser.CFG.CFGBlock{
-                contents: nil,
+                contents: [],
                 label: 1,
                 succs: [:end],
                 type: :skip
@@ -81,7 +81,7 @@ defmodule WhileParser.CFGTest do
     assert {:ok,
             [
               %WhileParser.CFG.CFGBlock{
-                contents: {:exp, :eq, _, _},
+                contents: [condition: {:exp, :eq, _, _}],
                 label: 1,
                 succs: [2, 3],
                 type: :condition
@@ -132,12 +132,14 @@ defmodule WhileParser.CFGTest do
     assert {:ok,
             [
               %WhileParser.CFG.CFGBlock{
-                contents:
-                  {:exp, :leq, 1,
-                   [
-                     lhs: {:exp, :variable, _, [name: "x"]},
-                     rhs: {:exp, :literal, _, [number: 0]}
-                   ]},
+                contents: [
+                  condition:
+                    {:exp, :leq, 1,
+                     [
+                       lhs: {:exp, :variable, _, [name: "x"]},
+                       rhs: {:exp, :literal, _, [number: 0]}
+                     ]}
+                ],
                 label: 1,
                 succs: [2, :end],
                 type: :condition
@@ -174,7 +176,7 @@ defmodule WhileParser.CFGTest do
               %WhileParser.CFG.CFGBlock{label: 1, type: :skip, succs: [2]},
               %WhileParser.CFG.CFGBlock{label: 2, type: :condition, succs: [3, 4]},
               %WhileParser.CFG.CFGBlock{label: 3, type: :assignment, succs: [2]},
-              %WhileParser.CFG.CFGBlock{label: 4, type: :assignment, succs: [:end]},
+              %WhileParser.CFG.CFGBlock{label: 4, type: :assignment, succs: [:end]}
             ], 1} = parse_to_cfg("skip; while x <= 0 do x := x + 1 end; y := x")
   end
 end
