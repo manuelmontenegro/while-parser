@@ -25,7 +25,7 @@ This parser supports the following operators in descending precedence:
 | `+`  `-`   | Left-associative               |
 | `==`  `<=` | Non-associative                |
 | `&&`       | Logical and. Right-associative |
-| `||`       | Logical or. Right-associative  |
+| `\|\|`     | Logical or. Right-associative  |
 | `?:`       | Conditional operator           |
 | `:=`       | Assignment operator            |
 
